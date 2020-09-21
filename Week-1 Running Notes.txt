@@ -1,0 +1,141 @@
+Supervised learning: 
+- Machine learns to predict from labelled data.
+- There are two methods in supervised Learning:
+	1. Classification (Target values are discrete classes)
+    	    Classifier - the fucntion that does classification.
+	2. Regression ((Target values are continous classes))
+    	    Regressor - the fucntion that does regression.
+UnSupervised Learning:
+- Find structure in unlabelled data.
+- Finding useful structure or knowledge where no labelled data is available.
+- There are two methods:
+	1. Clustering (Find groups of similar instances in the data)
+		ex: Finder clusters of similar users.
+	2. Outlier-Detection (Find unusual patterns)
+		ex: 1. finding abnormal server access patterns (unsupervised outlier detection)
+		       2. cyber attack or hacking.
+-----------------------------------------------------------------------------------------------------------------------------------
+STEPS OF SOLVING A MACHINE LEARNING PROBLEM:
+
+STEP-1: Representation
+- Transforming the data and deciding an algorithm for the data.
+- So the first step in solving a problem with machine learning is you have to figure out how to represent the learning problem in 
+   terms of something the computer can understand. You need to be able to take your data or even formulate the description 
+   of your object that you're interested in recognizing, for example, in a way that you can use input to an algorithm.
+   And you also need to decide what type of learning algorithm to apply to this data.
+Detailed steps:
+- First, You need to convert each input object, which we often call a sample, into a set of features that describe the object. 
+- Second, we need to pick a learning model, typically the type of classifier that you want the system to learn. 
+	- Take a some intitial guesses of good feature for the problem and the classifier and then train the system using our training data.
+	- Based on the evalution of the previous process, always refine the set of features.
+	- Go thorugh this process several times of refining the data, choosing a different type of classifier and assess their effect on accuracy.
+
+STEP-2: Evaluation
+- The second thing need to do is decide on an evaluation method that provides some type of quality or accuracy score. 
+   For the predictions or the output that is coming out of the machine learning algorithm typically I say classifier.
+- Access and compare the effectiveness of different classifiers.
+- For example, a good classifier will have high accuracy that will make a prediction that matches the correct true label a high percentage of the time.
+
+STEP-3: Optimization
+- Applying the machine learning algorithm to solve the problem.
+- Then search for optimal classifier to that gives the best evaluation.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Important Machine Learning libraries in python: 
+
+1. scikit-learn : contains wider range of important ML algorithms.
+2. SciPy : used for Data Manipulation and analysis (statistical distribution, optimization of fucntions, linera algebra, and specialized maths fucntions)
+3. NumPy :fundamental data structure used by Scikit-learn (multi-dimensional arrays).
+4. pandas: for Data manipulation and analysis. (for reading data and converitng data to desired formats)
+5. matplotlib: for representaion of data and analysis. (Python 2d plotting library)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+AN EXAMPLE OF SOLVING A MACHIINE LEARNING PROBLEM:
+STEPS:
+1. Import required modules and load data file
+2. Examining the data.
+3. Create train-test split.
+4. Create classifier object.
+5. Train the classifier (fit the estimator) using the training data.
+6. Estimate the accuracy of the classifier on future data, using the test data
+7. Use the trained k-NN classifier model to classify new, previously unseen objects
+8. Plot the decision boundaries of the k-NN classifier
+9. How sensitive is k-NN classification accuracy to the choice of the 'k' parameter?
+10. How sensitive is k-NN classification accuracy to the choice of the 'k' parameter?
+
+
+Notes:
+1. Import required module and load dataset.
+2. Create train test split from the data using train_test_split by SkLearn (default is 75% / 25% train-test split).
+3.  - While using scikit-learn, we'll denote the data using different flavours of the variable X (which is a two dimesnional array or dataframe)
+     - For lables, we denote with lowercase 'y' (which is one dimensional and scalar).
+4. Use of random state parameter in train_test_split fucntion:
+	- provides seed value to the fucntion's internal random number generator.
+	- if we use differnt splits for train and test, set it as other than 0.
+	- if we use the same data for train and test, set it as 0.
+	- If you don't specify the random_state in the code, then every time you run(execute)
+	   your code a new random value is generated and the train and test datasets would have different values each time.
+	-  if a fixed value is assigned like random_state = 0 or 1 or 42 or any other integer then no matter how many times
+	    you execute your code the result would be the same .i.e, same values in train and test datasets.
+5. Examine the data:
+6. Some Reasons why lookin at data is important:
+	1. Inspecting the features of each object, you might get a better idea of what type of cleaning or preprocessing still needs to be done to the data. 
+	    And of the range of values or the distribution of values that is typical for each attribute or each feature.
+	2. Second, you might notice missing or noisy data. Or maybe some specific inconsistencies, such as the wrong data type being used for a column.
+	    Incorrect or inconsistent units of measurement for a particular column, particular feature. Or maybe you'll notice that there aren't enough examples
+	    of a particular labeled class. You might notice, for example, that some measurements of a person's weight. Let's say you're doing a health application
+	    with a patient record for each row.
+                  3. you may realize, your problem can be solved without machine learning.
+	
+7. Visualize the data: So with these visualizations, we get at least two major benefits.
+ 	- First, we can get an idea of the range of values that each feature takes on. And we could immediately see any unusual outliers that are very different from other points. 
+	   And that might indicate noise or a missing feature or other problem with the data set.
+	- And second, we may be able to get a better idea how likely it is that a machine learning algorithm could do well at predicting the different classes.
+
+8. How to plot a 3D scatter plot:
+	- to add a polar subplot:  fig.add_subplot(111, projection='3d')
+	- Example:
+		- from mpl_toolkits.mplot3d import Axes3D
+		  fig = plt.figure()
+		  ax = fig.add_subplot(111, projection = '3d')
+		  ax.scatter(X_train['width'], X_train['height'], X_train['color_score'], c = y_train, marker = 'o', s=100)
+		  ax.set_xlabel('width')
+		  ax.set_ylabel('height')
+		  ax.set_zlabel('color_score')
+ 		  plt.show()
+9. Adavantages for pd.scatter_matrix:
+	- Alternative for sns.pairplot
+	- can make it more colorful and readable.
+10. K-NN( K-Nearest  Neighbours):
+	1. It is used for classification and regression.
+	2. K-NN classifiers are an exxample of instance based or memory based supervised learning. Instance based means, they memorize the labelled 
+	    sets that they see in the training set. They use those memorized examples to classify new object later.
+11. k-Nearest Neighbour classifier algorithm (Steps):
+ when given x_train,y_train and given a new instance x_test to be classified:
+ STEP-1: Find the most similar instances (let's call them X_NN) to x_test that are in X_train.
+ STEP-2: Get the labels y_NN for instances in X_NN
+ STEP-3: Predict the label for x_test by combining the labels y_NN
+	eg:simple majority vote.
+12. KNN hwo it works:
+- It searches for the nearest neighbours, if there is one neighbour, then k=1
+- KNN works by finding the distances between a query and all the examples in the data, selecting the specified number examples (K) closest to the query,
+ then votes for the most frequent label (in the case of classification) or averages the labels (in the case of regression).
+13. a nearest neighbour algorithm needs four things specified:
+	- A distance metric (what distance means in our future space)
+		Ex: most common method: Straight line or euclidian
+	- How many nearest neighbours to look at? (we have to tell the algorithm how many of the nearest neighbours to make predictions)
+		Ex: k=5 nearest neighbours 
+	- Optional weighting function on the neighbour points.
+	- methods for aggregating the class of neighbour point. (finally once we have the k nearby points, we must specify how to combine them 
+	   to produce a final prediction).
+		ex: simple majority vote.
+14. When value of k is smaller, the it has larger decision boundaries because of the risk of outliers, noise, mislabelled data.
+	              k is larger, then it has smaller decision boundaries, it votes for the closest neighbour.	
+       
+
+
+
+
+		
+      

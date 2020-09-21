@@ -1,0 +1,16 @@
+Important Points;
+1. to convert (bunch or dictonary or list) into a data frame:
+	- pd.DataFrame(data,columns)
+2.to convert a Scikit-learn dataset to a Pandas dataset?
+	- df= pd.DataFrame(data= np.c_[iris['data'], iris['target']],
+                                              columns= iris['feature_names'] + ['target'])
+	- df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
+
+3. to return the count of values of each type in a column
+	- df[column].value_counts()
+4. Split the DataFrame into X (the data) and y (the labels).
+	- X=cancerdf.iloc[:,:30]
+    	- y=cancerdf.iloc[:,31]
+5. To return the accuracy score of classifier with xtest and y test:
+	knn.score(X_test,y_test)
+6. 
